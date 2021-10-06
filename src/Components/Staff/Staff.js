@@ -58,9 +58,12 @@ function Staff() {
             <NavLink className={classes.tab} to="staff" exact>
               <h1 className="text2">STAFF <br/> DASHBOARD</h1>
             </NavLink>
+            <div>
             <NavLink className={classes.tab} to="/staff/add" exact>
               <Button variant="contained" className="Button">Add Patient</Button>
             </NavLink>
+            <NavLink to="/" style={{textDecoration:"none"}}><Button style={{marginRight:"15px"}} variant="contained" color="error">Log Out</Button></NavLink>
+          </div>
           </div>
           
         </Paper>
@@ -96,6 +99,7 @@ function Staff() {
               <div style={{display:"flex",justifyContent:"center"}}>
               <Link to={`/staff/${patient.id}`} style={{textDecoration:"none"}}><Button style={{marginRight:"15px"}} variant="contained">View</Button></Link>
               {/* <Link to={`/staff/edit/${patient.id}`} style={{textDecoration:"none"}}><Button style={{marginRight:"15px"}} variant="contained" >Edit</Button></Link> */}
+              
               
               </div>
             </TableRow>

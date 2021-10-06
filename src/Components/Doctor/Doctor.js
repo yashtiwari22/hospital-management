@@ -58,6 +58,7 @@ function Doctor() {
             <NavLink className={classes.tab} to="doctor" exact>
               <h1>DOCTOR <br/> DASHBOARD</h1>
             </NavLink>
+            <NavLink to="/" style={{textDecoration:"none"}}><Button style={{marginRight:"15px"}} variant="contained" color="error">Log Out</Button></NavLink>
           </div>
           
         </Paper>

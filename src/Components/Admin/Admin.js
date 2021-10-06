@@ -83,6 +83,7 @@ function Admin() {
                                 <NavLink className={classes.tab} to="/admin/addd" exact>
                                     <Button variant="contained" style={{margin:"2px"}}>Add Docter</Button>
                                 </NavLink>
+                                <NavLink to="/" style={{textDecoration:"none"}}><Button style={{marginRight:"15px"}} variant="contained" color="error">Log Out</Button></NavLink>
                             </div>
                         </div>
 
