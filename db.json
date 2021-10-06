@@ -1,0 +1,29 @@
+{
+  "Patients": [
+    {
+      "name": "John",
+      "age": "26",
+      "bloodgroup": "O+",
+      "symptoms": "Cough",
+      "id": 1,
+      "haemoglobin":10.3
+    },
+    {
+      "name": "Harry",
+      "age": "27",
+      "bloodgroup": "AB+",
+      "symptoms": "Fever",
+      "id": 2,
+      "haemoglobin":9.3
+
+    },
+    {
+      "name": "Riya",
+      "age": "22",
+      "bloodgroup": "AB-",
+      "symptoms": "Stomach Pain",
+      "id": 3,
+      "haemoglobin":11
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+*{
+    font-family: 'Ubuntu', sans-serif;
+}
+.admin{
+    background-color:white;
+    height:100vh;
+}
+.Admin{
+    margin: 15px;
+    padding:15px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.Add
+{
+    margin-top:20px;
+    margin-bottom:10px;
+    margin-right:10px;
+    margin-left:10px;
+    padding:5px;
+}
+.Tablerow{
+    background-color: hsla(239, 90%, 27%, 1);
+}
+.Admindash
+{
+    background: hsla(239, 90%, 27%, 1);
+
+background: linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+
+background: -moz-linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+
+background: -webkit-linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#070981", endColorstr="#C8D3FB", GradientType=1 );
+}
+.Table{
+    display:flex;
+    
+    width:100vw;
+}
+ @media screen and (max-width:480px){ 
+    .Table{
+        flex-direction: column;
+    }
+    .text4{
+        font-size: 1.5rem;
+    }
+}

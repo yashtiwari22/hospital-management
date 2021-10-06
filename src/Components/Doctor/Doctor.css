@@ -1,0 +1,41 @@
+*{
+    font-family: 'Ubuntu', sans-serif;
+}
+.ddoctor{
+    
+    background-color:white;
+    height:100vh;
+}
+.Ddoctor{
+    margin: 15px;
+    padding:15px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.add
+{
+    margin-top:20px;
+    margin-bottom:10px;
+    margin-right:10px;
+    margin-left:10px;
+    padding:5px;
+}
+.tabledrow{
+    background-color: hsla(239, 90%, 27%, 1);
+}
+.ddoctordash
+{
+    background: hsla(239, 90%, 27%, 1);
+
+background: linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+
+background: -moz-linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+
+background: -webkit-linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#070981", endColorstr="#C8D3FB", GradientType=1 );
+}
+.tabled{
+    width:97.5vw;
+}

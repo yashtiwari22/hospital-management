@@ -1,0 +1,22 @@
+{
+  "Staffs": [
+    {
+      "id": 1,
+      "name": "Rahul",
+      "age": "24",
+      "role": "intern"
+    },
+    {
+      "id": 2,
+      "name": "Kamya",
+      "age": "27",
+      "role": "residents"
+    },
+    {
+      "id": 3,
+      "name": "Shriya",
+      "age": "30",
+      "role": "nurse"
+    }
+  ]
+}

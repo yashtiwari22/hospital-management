@@ -1,0 +1,35 @@
+.doctor3{
+    
+    background: hsla(239, 90%, 27%, 1);
+
+    background: linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+    
+    background: -moz-linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+    
+    background: -webkit-linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#070981", endColorstr="#C8D3FB", GradientType=1 );
+   
+    font-size: 1.5rem;
+    margin:20px;
+    padding:20px;
+}
+.ViewDoctor{
+    margin:20px;
+    height:400px;
+}
+li{
+    list-style: none;
+    margin:10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left:20px;
+    font-size: 1.5rem;
+}
+.id{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+}
+
