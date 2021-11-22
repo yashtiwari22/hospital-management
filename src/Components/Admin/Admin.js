@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     margin: "5px",
   },
 });
-function Admin() {
+function Admin({ data1, data2 }) {
   // const {id} =useParams();
   const classes = useStyles();
   const [staffs, setStaffs] = useState([]);
@@ -36,12 +36,10 @@ function Admin() {
     loadDoctors();
   }, []);
   const loadStaffs = async () => {
-    const result = await axios.get("http://localhost:8000/Staffs");
-    setStaffs(result.data);
+    setStaffs(data1);
   };
   const loadDoctors = async () => {
-    const result = await axios.get("http://localhost:8000/Doctors");
-    setDoctors(result.data);
+    setDoctors(data2);
   };
   const onDeleteD = async (id) => {
     await axios.delete(`http://localhost:8000/Doctors/${id}`);
@@ -117,7 +115,7 @@ function Admin() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {staffs.map((staff, index) => (
+                {data1.map((staff, index) => (
                   <TableRow
                     key={staff.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -184,7 +182,7 @@ function Admin() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {doctors.map((doctor, index) => (
+                {data2.map((doctor, index) => (
                   <TableRow
                     key={doctor.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

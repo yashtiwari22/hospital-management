@@ -23,6 +23,8 @@ function App() {
   const [error, setError] = useState("");
   const [portal, setPortal] = React.useState("");
   const [patientData, setPatientData] = useState(Data.Patients);
+  const [doctorData, setDoctorData] = useState(Data.Doctors);
+  const [staffData, setStaffData] = useState(Data.Staffs);
 
   const LoginInf = (details) => {
     console.log(details);
@@ -54,37 +56,37 @@ function App() {
           <AddUser data={patientData} setData={setPatientData} />
         </Route>
         <Route exact path="/staff/edit/:id">
-          <EditUser />
+          <EditUser data={staffData} />
         </Route>
         <Route exact path="/staff/:id">
-          <View />
+          <View data={staffData} />
         </Route>
         <Route exact path="/admin">
-          <Admin />
+          <Admin data1={staffData} data2={doctorData} />
         </Route>
         <Route exact path="/admin/add">
-          <AddStaff />
+          <AddStaff data={staffData} setData={setStaffData} />
         </Route>
         <Route exact path="/admin/addd">
-          <AddDoctors />
+          <AddDoctors data={doctorData} setData={setDoctorData} />
         </Route>
         <Route exact path="/admin/edit/:id">
-          <EditStaff />
+          <EditStaff data={staffData} />
         </Route>
         <Route exact path="/admin/:id">
-          <ViewStaff />
+          <ViewStaff data={staffData} />
         </Route>
         <Route exact path="/admin/editd/:id">
-          <EditDoctors />
+          <EditDoctors data={doctorData} />
         </Route>
         <Route exact path="/admin/d/:id">
-          <ViewDoctors />
+          <ViewDoctors data={doctorData} />
         </Route>
         <Route exact path="/doctor">
-          <Doctor />
+          <Doctor data={patientData} />
         </Route>
         <Route exact path="/doctor/:id">
-          <ViewPatient />
+          <ViewPatient data={patientData} />
         </Route>
         <Redirect to="/" />
       </Switch>
