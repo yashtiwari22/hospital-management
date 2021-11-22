@@ -14,6 +14,7 @@ import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { gradient } from "tsparticles";
+import Data from "../../data";
 
 const useStyles = makeStyles({
   tab: {
@@ -28,6 +29,7 @@ function Staff() {
   useEffect(() => {
     console.log("hi patient");
     loadPatients();
+    console.log(Data.Doctors);
   }, []);
   const loadPatients = async () => {
     const result = await axios.get("http://localhost:8000/Patients");
