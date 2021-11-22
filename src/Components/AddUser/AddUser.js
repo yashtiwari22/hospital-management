@@ -6,7 +6,7 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import "./AddUser.css";
 
-function AddUser() {
+function AddUser({ data, setData }) {
   let history = useHistory();
   const [patient, setPatient] = useState({
     name: "",
@@ -22,9 +22,9 @@ function AddUser() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8000/Patients", patient);
+    setData([...data, patient]);
+    console.log(data);
     history.push("/staff");
-    console.log(patient);
   };
   return (
     <>

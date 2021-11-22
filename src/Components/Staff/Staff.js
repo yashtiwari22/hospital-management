@@ -22,19 +22,16 @@ const useStyles = makeStyles({
     textDecoration: "none",
   },
 });
-function Staff() {
+function Staff({ data }) {
   const classes = useStyles();
-  const [patients, setPatients] = useState([]);
+  const [patients, setPatients] = useState();
 
   useEffect(() => {
     console.log("hi patient");
     loadPatients();
-    console.log(Data.Doctors);
   }, []);
   const loadPatients = async () => {
-    const result = await axios.get("http://localhost:8000/Patients");
-    setPatients(result.data);
-    console.log(result.data);
+    setPatients(data);
   };
 
   return (
@@ -105,7 +102,7 @@ function Staff() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {patients.map((patient, index) => (
+                {data.map((patient, index) => (
                   <TableRow
                     key={patient.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
