@@ -17,21 +17,38 @@ function EditStaff() {
 
   const { name, age, role } = staff;
   const onInputChange = (e) => {
+    console.log(e.target.value);
     setStaff({ ...staff, [e.target.name]: e.target.value });
+    console.log(staff);
   };
   useEffect(() => {
     loadStaff();
   }, []);
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await axios.put(`http://localhost:8000/Staffs/${id}`, staff);
+  const update = async (e) => {
+    await axios.put(`/staffData/${id}`, staff);
     history.push("/admin");
-    console.log(staff);
   };
+
   const loadStaff = async () => {
-    const result = await axios.get(`http://localhost:8000/Staffs/${id}`);
-    setStaff(result.data);
+    try {
+      const res = await fetch("/staffData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      let i = 0;
+      while (data[i]._id != id) {
+        i++;
+      }
+      setStaff(data[i]);
+      console.log(staff);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
@@ -93,7 +110,7 @@ function EditStaff() {
             <Button
               style={{ margin: "15px" }}
               variant="contained"
-              onClick={(e) => onSubmit(e)}
+              onClick={() => update()}
             >
               Update
             </Button>

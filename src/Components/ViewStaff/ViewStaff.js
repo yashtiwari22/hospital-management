@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams } from "react-router";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/system";
 import { Paper } from "@mui/material";
 import "./ViewStaff.css";
 
@@ -18,8 +16,24 @@ function ViewStaff() {
     loadStaff();
   }, []);
   const loadStaff = async () => {
-    const result = await axios.get(`http://localhost:8000/Staffs/${id}`);
-    setStaff(result.data);
+    try {
+      const res = await fetch("/staffData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      let i = 0;
+      while (data[i]._id != id) {
+        i++;
+      }
+      setStaff(data[i]);
+      console.log(staff);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="container">

@@ -23,15 +23,29 @@ function EditDoctors() {
     loadDoctor();
   }, []);
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await axios.put(`http://localhost:8000/Doctors/${id}`, doctor);
+  const update = async (e) => {
+    await axios.put(`/doctorData/${id}`, doctor);
     history.push("/admin");
-    console.log(doctor);
   };
   const loadDoctor = async () => {
-    const result = await axios.get(`http://localhost:8000/Doctors/${id}`);
-    setDoctor(result.data);
+    try {
+      const res = await fetch("/doctorData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      let i = 0;
+      while (data[i]._id != id) {
+        i++;
+      }
+      setDoctor(data[i]);
+      console.log(doctor);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
@@ -93,7 +107,7 @@ function EditDoctors() {
             <Button
               style={{ margin: "20px" }}
               variant="contained"
-              onClick={(e) => onSubmit(e)}
+              onClick={() => update()}
             >
               Update
             </Button>

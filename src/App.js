@@ -50,43 +50,43 @@ function App() {
           />
         </Route>
         <Route exact path="/staff">
-          <Staff data={patientData} />
+          <Staff />
         </Route>
         <Route exact path="/staff/add">
-          <AddUser data={patientData} setData={setPatientData} />
+          <AddUser />
         </Route>
         <Route exact path="/staff/edit/:id">
-          <EditUser data={staffData} />
+          <EditUser />
         </Route>
         <Route exact path="/staff/:id">
-          <View data={staffData} />
+          <View />
         </Route>
         <Route exact path="/admin">
-          <Admin data1={staffData} data2={doctorData} />
+          <Admin />
         </Route>
         <Route exact path="/admin/add">
-          <AddStaff data={staffData} setData={setStaffData} />
+          <AddStaff />
         </Route>
         <Route exact path="/admin/addd">
-          <AddDoctors data={doctorData} setData={setDoctorData} />
+          <AddDoctors />
         </Route>
         <Route exact path="/admin/edit/:id">
-          <EditStaff data={staffData} />
+          <EditStaff />
         </Route>
         <Route exact path="/admin/:id">
-          <ViewStaff data={staffData} />
+          <ViewStaff />
         </Route>
         <Route exact path="/admin/editd/:id">
-          <EditDoctors data={doctorData} />
+          <EditDoctors />
         </Route>
         <Route exact path="/admin/d/:id">
-          <ViewDoctors data={doctorData} />
+          <ViewDoctors />
         </Route>
         <Route exact path="/doctor">
-          <Doctor data={patientData} />
+          <Doctor />
         </Route>
         <Route exact path="/doctor/:id">
-          <ViewPatient data={patientData} />
+          <ViewPatient />
         </Route>
         <Redirect to="/" />
       </Switch>

@@ -19,8 +19,24 @@ function View() {
     loadUser();
   }, []);
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:8000/Patients/${id}`);
-    setPatient(result.data);
+    try {
+      const res = await fetch("/patientData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      let i = 0;
+      while (data[i]._id != id) {
+        i++;
+      }
+      setPatient(data[i]);
+      console.log(patient);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="container">

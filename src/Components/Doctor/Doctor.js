@@ -29,9 +29,22 @@ function Doctor() {
     console.log("hi patient");
     loadPatients();
   }, []);
+
   const loadPatients = async () => {
-    const result = await axios.get("http://localhost:8000/Patients");
-    setPatients(result.data);
+    try {
+      const res = await fetch("/patientData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      setPatients(...patients, data);
+      console.log(patients);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -97,7 +110,7 @@ function Doctor() {
               <TableBody>
                 {patients.map((patient, index) => (
                   <TableRow
-                    key={patient.id}
+                    key={patient._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
@@ -109,7 +122,7 @@ function Doctor() {
                     <TableCell align="right">{patient.symptoms}</TableCell>
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <Link
-                        to={`/doctor/${patient.id}`}
+                        to={`/doctor/${patient._id}`}
                         style={{ textDecoration: "none" }}
                       >
                         <Button

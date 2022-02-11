@@ -12,9 +12,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { gradient } from "tsparticles";
-import Data from "../../data";
 
 const useStyles = makeStyles({
   tab: {
@@ -22,16 +19,30 @@ const useStyles = makeStyles({
     textDecoration: "none",
   },
 });
-function Staff({ data }) {
+function Staff() {
   const classes = useStyles();
-  const [patients, setPatients] = useState();
+  const [patients, setPatients] = useState([]);
 
   useEffect(() => {
     console.log("hi patient");
     loadPatients();
   }, []);
+
   const loadPatients = async () => {
-    setPatients(data);
+    try {
+      const res = await fetch("/patientData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      setPatients(...patients, data);
+      console.log(patients);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -83,7 +94,7 @@ function Staff({ data }) {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow className="ttablerow">
-                  <TableCell style={{ color: "white" }}>id</TableCell>
+                  <TableCell style={{ color: "white" }}>S No.</TableCell>
                   <TableCell style={{ color: "white" }} align="right">
                     Name
                   </TableCell>
@@ -102,7 +113,7 @@ function Staff({ data }) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.map((patient, index) => (
+                {patients.map((patient, index) => (
                   <TableRow
                     key={patient.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -116,7 +127,7 @@ function Staff({ data }) {
                     <TableCell align="right">{patient.symptoms}</TableCell>
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <Link
-                        to={`/staff/${patient.id}`}
+                        to={`/staff/${patient._id}`}
                         style={{ textDecoration: "none" }}
                       >
                         <Button
@@ -126,7 +137,6 @@ function Staff({ data }) {
                           View
                         </Button>
                       </Link>
-                      {/* <Link to={`/staff/edit/${patient.id}`} style={{textDecoration:"none"}}><Button style={{marginRight:"15px"}} variant="contained" >Edit</Button></Link> */}
                     </div>
                   </TableRow>
                 ))}

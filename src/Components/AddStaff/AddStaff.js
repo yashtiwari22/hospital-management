@@ -21,10 +21,24 @@ function AddStaff({ data, setData }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setData([...data, staff]);
-    console.log(data);
-    history.push("/admin");
-    console.log(staff);
+    const { name, age, role } = staff;
+    try {
+      const res = await fetch("/staffData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          age,
+          role,
+        }),
+      });
+      console.log(res);
+      history.push("/admin");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>

@@ -18,8 +18,24 @@ function ViewDoctors() {
     loadDoctor();
   }, []);
   const loadDoctor = async () => {
-    const result = await axios.get(`http://localhost:8000/Doctors/${id}`);
-    setDoctor(result.data);
+    try {
+      const res = await fetch("/doctorData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      let i = 0;
+      while (data[i]._id != id) {
+        i++;
+      }
+      setDoctor(data[i]);
+      console.log(doctor);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="container">

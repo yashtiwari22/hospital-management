@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { Button, TextField } from "@mui/material";
-import axios from "axios";
 import { useHistory } from "react-router";
 import "./AddUser.css";
+import axios from "../../axios";
 
 function AddUser({ data, setData }) {
   let history = useHistory();
@@ -13,18 +13,37 @@ function AddUser({ data, setData }) {
     age: "",
     bloodgroup: "",
     symptoms: "",
+    haemoglobin: "",
   });
-
-  const { name, age, bloodgroup, symptoms } = patient;
+  const { name, age, bloodgroup, symptoms, haemoglobin } = patient;
   const onInputChange = (e) => {
     setPatient({ ...patient, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setData([...data, patient]);
-    console.log(data);
-    history.push("/staff");
+    const { name, age, bloodgroup, symptoms, haemoglobin } = patient;
+
+    try {
+      const res = await fetch("/patientData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          age,
+          bloodgroup,
+          symptoms,
+          haemoglobin,
+        }),
+      });
+
+      console.log(res);
+      history.push("/staff");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
@@ -91,6 +110,14 @@ function AddUser({ data, setData }) {
               variant="outlined"
               name="symptoms"
               value={symptoms}
+              onChange={(e) => onInputChange(e)}
+            />
+            <TextField
+              style={{ margin: "15px" }}
+              label="Haemoglobin"
+              variant="outlined"
+              name="haemoglobin"
+              value={haemoglobin}
               onChange={(e) => onInputChange(e)}
             />
             <Button

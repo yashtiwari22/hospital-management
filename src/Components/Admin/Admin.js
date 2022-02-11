@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     margin: "5px",
   },
 });
-function Admin({ data1, data2 }) {
+function Admin() {
   // const {id} =useParams();
   const classes = useStyles();
   const [staffs, setStaffs] = useState([]);
@@ -36,18 +36,43 @@ function Admin({ data1, data2 }) {
     loadDoctors();
   }, []);
   const loadStaffs = async () => {
-    setStaffs(data1);
+    try {
+      const res = await fetch("/staffData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data1 = await res.json();
+      console.log(data1);
+      setStaffs(...staffs, data1);
+      console.log(staffs);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const loadDoctors = async () => {
-    setDoctors(data2);
+    try {
+      const res = await fetch("/doctorData", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data2 = await res.json();
+      console.log(data2);
+      setDoctors(...doctors, data2);
+      console.log(doctors);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const onDeleteD = async (id) => {
-    await axios.delete(`http://localhost:8000/Doctors/${id}`);
+    await axios.delete(`/doctorData/${id}`, doctors);
     loadDoctors();
   };
   const onDeleteS = async (id) => {
-    await axios.delete(`http://localhost:8000
-    /Staffs/${id}`);
+    await axios.delete(`/staffData/${id}`, staffs);
     loadStaffs();
   };
 
@@ -115,9 +140,9 @@ function Admin({ data1, data2 }) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data1.map((staff, index) => (
+                {staffs.map((staff, index) => (
                   <TableRow
-                    key={staff.id}
+                    key={staff._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
@@ -128,7 +153,7 @@ function Admin({ data1, data2 }) {
                     <TableCell align="right">{staff.role}</TableCell>
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <Link
-                        to={`/admin/${staff.id}`}
+                        to={`/admin/${staff._id}`}
                         style={{ textDecoration: "none" }}
                       >
                         <Button
@@ -139,7 +164,7 @@ function Admin({ data1, data2 }) {
                         </Button>
                       </Link>
                       <Link
-                        to={`/admin/edit/${staff.id}`}
+                        to={`/admin/edit/${staff._id}`}
                         style={{ textDecoration: "none" }}
                       >
                         <Button
@@ -152,7 +177,7 @@ function Admin({ data1, data2 }) {
                       <Button
                         variant="outlined"
                         color="error"
-                        onClick={() => onDeleteS(staff.id)}
+                        onClick={() => onDeleteS(staff._id)}
                       >
                         Delete
                       </Button>
@@ -182,9 +207,9 @@ function Admin({ data1, data2 }) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data2.map((doctor, index) => (
+                {doctors.map((doctor, index) => (
                   <TableRow
-                    key={doctor.id}
+                    key={doctor._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
@@ -195,7 +220,7 @@ function Admin({ data1, data2 }) {
                     <TableCell align="right">{doctor.specialization}</TableCell>
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <Link
-                        to={`/admin/d/${doctor.id}`}
+                        to={`/admin/d/${doctor._id}`}
                         style={{ textDecoration: "none" }}
                       >
                         <Button
@@ -206,7 +231,7 @@ function Admin({ data1, data2 }) {
                         </Button>
                       </Link>
                       <Link
-                        to={`/admin/editd/${doctor.id}`}
+                        to={`/admin/editd/${doctor._id}`}
                         style={{ textDecoration: "none" }}
                       >
                         <Button
@@ -219,7 +244,7 @@ function Admin({ data1, data2 }) {
                       <Button
                         variant="outlined"
                         color="error"
-                        onClick={() => onDeleteD(doctor.id)}
+                        onClick={() => onDeleteD(doctor._id)}
                       >
                         Delete
                       </Button>

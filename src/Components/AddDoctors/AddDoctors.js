@@ -21,10 +21,23 @@ function AddDocters({ data, setData }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setData([...data, doctor]);
-    console.log(data);
-    history.push("/admin");
-    console.log(doctor);
+    try {
+      const res = await fetch("/doctorData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          age,
+          specialization,
+        }),
+      });
+      console.log(res);
+      history.push("/admin");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
