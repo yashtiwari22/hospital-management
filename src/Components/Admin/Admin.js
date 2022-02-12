@@ -90,7 +90,11 @@ function Admin() {
             },
           }}
         >
-          <Paper elevation={4} style={{ margin: "20px" }} className="Admindash">
+          <Paper
+            elevation={4}
+            style={{ margin: "20px", width: "100vw" }}
+            className="Admindash"
+          >
             <div className="Admin">
               <NavLink className={classes.tab} to="admin" exact>
                 <h1 className="text4">

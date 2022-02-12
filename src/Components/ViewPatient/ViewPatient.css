@@ -1,60 +1,75 @@
-.patientd3{
-    
-    background: hsla(239, 90%, 27%, 1);
+.patientd3 {
+  background: hsla(239, 90%, 27%, 1);
 
-    background: linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
-    
-    background: -moz-linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
-    
-    background: -webkit-linear-gradient(45deg, hsla(239, 90%, 27%, 1) 0%, hsla(227, 86%, 88%, 1) 100%);
-    
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#070981", endColorstr="#C8D3FB", GradientType=1 );
-   
-    font-size: 1.5rem;
-    margin:20px;
-    padding:20px;
+  background: linear-gradient(
+    45deg,
+    hsla(239, 90%, 27%, 1) 0%,
+    hsla(227, 86%, 88%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    45deg,
+    hsla(239, 90%, 27%, 1) 0%,
+    hsla(227, 86%, 88%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    45deg,
+    hsla(239, 90%, 27%, 1) 0%,
+    hsla(227, 86%, 88%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#070981", endColorstr="#C8D3FB", GradientType=1 );
+
+  font-size: 1.5rem;
+  margin: 20px;
+  padding: 20px;
 }
-.Viewd{
-    margin:20px;
-    height:400px;
-    width:50%;
+.Viewd {
+  margin: 20px;
+  height: 450px;
+  width: 50%;
 }
-li{
-    list-style: none;
-    margin:10px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    margin-left:20px;
-    font-size: 1.5rem;
+.viewchart {
+  margin: 20px;
 }
-.id{
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+li {
+  list-style: none;
+  margin: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-size: 1.5rem;
 }
- .viewchart{
-    display:flex;
-    flex-direction: row;
-} 
-@media (max-width:480px){
-    li{
-        margin:10px;
+
+.id {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.viewchart {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 480px) {
+  li {
+    margin: 10px;
     margin-top: 20px;
     margin-bottom: 30px;
-    margin-left:10px;
+    margin-left: 10px;
     font-size: 16px;
-    }
-    .text{
-        font-size: 2rem;
-    }
-    .button{
-        width:200px;
-    }
-    .patientd3{
-        width:370px;
-    }
-    .viewd{
-        margin-right:5px;
-    }
+  }
+  .text {
+    font-size: 2rem;
+  }
+  .button {
+    width: 200px;
+  }
+  .patientd3 {
+    width: 370px;
+  }
+  .viewd {
+    margin-right: 5px;
+  }
 }

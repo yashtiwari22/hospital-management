@@ -63,7 +63,7 @@ function Doctor() {
         >
           <Paper
             elevation={4}
-            style={{ margin: "20px" }}
+            style={{ margin: "20px", width: "100vw" }}
             className="ddoctordash"
           >
             <div className="Ddoctor">

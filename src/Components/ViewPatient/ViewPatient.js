@@ -70,7 +70,7 @@ function ViewPatient() {
             </h1>
           </div>
           <hr />
-          <ul>
+          <ul id="p-data">
             <li>
               <strong>Name:</strong> {patient.name}
             </li>
